@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:groww_flutter/features/Secure%20pin/screens/pin_page.dart';
+import 'package:groww_flutter/features/Secure_pin/screens/pin_page.dart';
 import 'package:groww_flutter/features/splash/cubits/splash_state.dart';
 
 class SplashCubit extends Cubit<SplashState> {

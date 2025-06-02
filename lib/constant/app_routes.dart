@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:groww_flutter/features/Secure%20pin/screens/pin_page.dart';
+import 'package:groww_flutter/features/Secure_pin/screens/pin_page.dart';
+import 'package:groww_flutter/features/home/screens/home_page.dart';
 import 'package:groww_flutter/features/splash/screens/splash_page.dart';
 
 class AppRoutes {
@@ -11,5 +12,6 @@ class AppRoutes {
   Map<String, Widget Function(BuildContext)> routes = {
     '/': (context) => const SplashScreen(),
     PinScreen.pinScreen: (context) => const PinScreen(),
+    HomeScreen.homeScreen: (context) => const HomeScreen(),
   };
 }

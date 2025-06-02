@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:groww_flutter/constant/app_colors.dart';
 import 'package:groww_flutter/constant/app_images.dart';
-import 'package:groww_flutter/features/Secure%20pin/cubits/pin_cubit.dart';
-import 'package:groww_flutter/features/Secure%20pin/cubits/pin_state.dart';
-import 'package:groww_flutter/features/Secure%20pin/widgets/pin_widget.dart';
+import 'package:groww_flutter/constant/app_text_styles.dart';
+import 'package:groww_flutter/features/Secure_pin/cubits/pin_cubit.dart';
+import 'package:groww_flutter/features/Secure_pin/cubits/pin_state.dart';
+import 'package:groww_flutter/features/Secure_pin/widgets/pin_widget.dart';
+import 'package:groww_flutter/features/home/screens/home_page.dart';
 
 class PinScreen extends StatelessWidget {
   const PinScreen({super.key});
@@ -19,7 +20,7 @@ class PinScreen extends StatelessWidget {
         child: BlocBuilder<PinCubit, PinState>(
             bloc: PinCubit(),
             builder: (context, state) {
-              final pinCubit = context.read<PinCubit>();
+              final pinCubit = context.watch<PinCubit>();
               return Scaffold(
                 backgroundColor: AppColors.whiteColor,
                 body: SafeArea(
@@ -43,16 +44,16 @@ class PinScreen extends StatelessWidget {
                       Text(
                         'Hi, Sahil Kundaliya',
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.roboto(
-                            fontSize: 20, fontWeight: FontWeight.w500),
+                        style: AppTextStyles.robotoStyle(
+                            weight: FontWeight.w500, fontSize: 20),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 12),
                         child: Text(
                           'Enter your Groww PIN',
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.roboto(
-                              fontSize: 15, fontWeight: FontWeight.w400),
+                          style: AppTextStyles.robotoStyle(
+                              weight: FontWeight.w400, fontSize: 15),
                         ),
                       ),
                       Padding(
@@ -88,10 +89,10 @@ class PinScreen extends StatelessWidget {
                         children: [
                           Text(
                             'Use fingerprint',
-                            style: GoogleFonts.roboto(
-                                color: AppColors.customGreenColor,
+                            style: AppTextStyles.robotoStyle(
+                                weight: FontWeight.w500,
                                 fontSize: 14,
-                                fontWeight: FontWeight.w500),
+                                color: AppColors.customGreenColor),
                           ),
                           GridView.builder(
                             shrinkWrap: true,
@@ -109,15 +110,22 @@ class PinScreen extends StatelessWidget {
                                 child: InkWell(
                                   borderRadius: BorderRadius.circular(100),
                                   onTap: () {
-                                    pinCubit.addPassword(key);
+                                    pinCubit.addPassword(
+                                      key,
+                                      () {
+                                        Navigator.of(context)
+                                            .pushReplacementNamed(
+                                                HomeScreen.homeScreen);
+                                      },
+                                    );
                                   },
                                   child: Center(
                                     child: Text(
                                       key,
-                                      style: GoogleFonts.roboto(
-                                          color: AppColors.blackColor,
-                                          fontSize: 30,
-                                          fontWeight: FontWeight.w500),
+                                      style: AppTextStyles.robotoStyle(
+                                        weight: FontWeight.w500,
+                                        fontSize: 30,
+                                      ),
                                     ),
                                   ),
                                 ),

@@ -1,12 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:groww_flutter/features/Secure%20pin/cubits/pin_state.dart';
+import 'package:groww_flutter/features/Secure_pin/cubits/pin_state.dart';
 
 class PinCubit extends Cubit<PinState> {
   PinCubit() : super(PinInitialState()) {
     setInitialList();
   }
 
-  List<String> password = [];
+  List<String> password = ['', '', '', ''];
 
   final List<String> keys = [
     '1',
@@ -23,17 +24,37 @@ class PinCubit extends Cubit<PinState> {
     '⌫'
   ];
 
-  void addPassword(String key) {
+  void addPassword(String key, VoidCallback onSuccess) {
     if (key == '⌫') {
       int index = getPsswordLength();
-      password[index] = '-1';
+      if (index != -1) {
+        password[index] = '-1';
+        emit(PinUpdateState());
+      }
       return;
     }
     int keyIndex = getNextPsswordKeyIndex();
     if (keyIndex != -1) {
       password[keyIndex] = key;
       emit(PinUpdateState());
+      if (keyIndex == 3) {
+        bool passwordIs = isPasswordCorrect();
+        if (passwordIs) {
+          onSuccess();
+        } else {
+          setInitialList(); // for resert
+        }
+      }
     }
+  }
+
+  bool isPasswordCorrect() {
+    for (int i = 0; i < password.length; i++) {
+      if (password[i] != '1') {
+        return false;
+      }
+    }
+    return true;
   }
 
   int getNextPsswordKeyIndex() {
@@ -56,7 +77,7 @@ class PinCubit extends Cubit<PinState> {
 
   void setInitialList() {
     for (var i = 0; i < 4; i++) {
-      password.add('-1');
+      password[i] = '-1';
     }
   }
 }

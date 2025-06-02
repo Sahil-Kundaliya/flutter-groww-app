@@ -20,4 +20,6 @@ class AppColors {
 
   static const customGreyColor = Color(0xffB7B7B7);
   static const customGreenColor = Color(0xff00B386);
+  static const customRedColor = Color(0xffF35D5D);
+  static const lightBorderColor = Color(0xffE8E8E8);
 }
