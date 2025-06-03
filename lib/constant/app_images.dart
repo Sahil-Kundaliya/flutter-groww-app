@@ -7,4 +7,7 @@ class AppImages {
       'assets/images/mutual_funds_bottom.png';
   static const String stocksBottom = 'assets/images/stocks_bottom.png';
   static const String upiBottom = 'assets/images/upi_bottom.png';
+
+  //dummy stocks
+  static const String dummyStocks = 'assets/images/dummy_stock.png';
 }
