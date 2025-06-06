@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:groww_flutter/constant/app_colors.dart';
 import 'package:groww_flutter/constant/app_images.dart';
 import 'package:groww_flutter/constant/app_text_styles.dart';
 import 'package:groww_flutter/features/stocks/cubits/stock_cubit.dart';
 import 'package:groww_flutter/features/stocks/cubits/stock_state.dart';
 import 'package:groww_flutter/features/stocks/widgets/explore_stock_group_widget.dart';
+import 'package:groww_flutter/features/stocks/widgets/today_moves_widget.dart';
+import 'package:groww_flutter/features/stocks/widgets/your_feed_widget.dart';
 
 class ExploreWidget extends StatelessWidget {
   const ExploreWidget({super.key});
@@ -61,7 +64,71 @@ class ExploreWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Text(
+                  'Top Moves todays',
+                  style: AppTextStyles.robotoStyle(
+                      fontSize: 15, weight: FontWeight.w700),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: Row(
+                  children: [
+                    TodayMovesWidget(
+                      titie: "Gainers",
+                    ),
+                    TodayMovesWidget(
+                      titie: "Losers",
+                    ),
+                    Container(
+                      height: 20,
+                      width: 0.8,
+                      color: AppColors.customGreyColor,
+                    ),
+                    SizedBox(width: 8),
+                    TodayMovesWidget(
+                      titie: "Large cap",
+                      dropdownIcons: true,
+                      isSelected: true,
+                    ),
+                  ],
+                ),
+              ),
+              ExploreStockGroupWidget(
+                seeMore: true,
+                allStocks: stockCubit.mostTradedStocks,
+              ),
+              ExploreStockGroupWidget(
+                seeMore: true,
+                title: 'Most traded in MTF',
+                allStocks: stockCubit.mostTradedStocks,
+              ),
+              ExploreStockGroupWidget(
+                seeMore: false,
+                title: 'Top intraday',
+                subTitle: "Intraday screener",
+                allStocks: stockCubit.mostTradedStocks,
+              ),
+              ExploreStockGroupWidget(
+                seeMore: false,
+                title: 'Popular ETFs for SIP',
+                subTitle: "See more",
+                allStocks: stockCubit.mostTradedStocks,
+                onlyShowTop: true,
+              ),
+              ExploreStockGroupWidget(
+                seeMore: false,
+                title: 'Stock in news',
+                subTitle: "Market news",
+                allStocks: stockCubit.mostTradedStocks,
+              ),
+              YourFeedWidget(),
+              SizedBox(
+                height: 30,
+              ),
             ],
           ),
         ),
