@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:groww_flutter/constant/app_colors.dart';
-import 'package:groww_flutter/constant/app_images.dart';
 import 'package:groww_flutter/constant/app_text_styles.dart';
 import 'package:groww_flutter/features/stocks/cubits/stock_cubit.dart';
 import 'package:groww_flutter/features/stocks/cubits/stock_state.dart';

@@ -25,117 +25,149 @@ class _StockScreenState extends State<StockScreen>
           return Scaffold(
               backgroundColor: AppColors.whiteColor,
               body: SafeArea(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Image.asset(
-                                AppImages.splashLogo,
-                                height: 30,
-                                width: 30,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 14),
-                                child: Text(
-                                  'Stocks',
-                                  style: AppTextStyles.robotoStyle(
-                                      fontSize: 18, weight: FontWeight.w600),
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.search,
-                                size: 30,
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 12),
-                                child: Icon(
-                                  Icons.qr_code,
-                                  size: 30,
-                                ),
-                              ),
-                              Image.asset(
-                                AppImages.dummyProfile,
-                                height: 30,
-                                width: 30,
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20, bottom: 10),
-                      child: SizedBox(
-                        height: 70,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          padding: EdgeInsets.symmetric(horizontal: 18),
-                          children: [
-                            MarketCapWidget(
-                              title: 'NIFTY 50',
-                              currentValue: '24,194.50',
-                              todayPercentage: '-27.40 (0.11%)',
-                              firstItemPedding: true,
-                            ),
-                            MarketCapWidget(
-                              title: 'BANK NIFTY',
-                              currentValue: '52,191.50',
-                              todayPercentage: '-16.00 (0.03%)',
-                            ),
-                            MarketCapWidget(
-                              title: 'Sensex',
-                              currentValue: '81,438.26',
-                              todayPercentage: '-194.73 (0.24%)',
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: DefaultTabController(
-                        length: stockCubit.stocksTabList.length,
+                child: DefaultTabController(
+                  length: stockCubit.stocksTabList.length,
+                  child: NestedScrollView(
+                    headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                      SliverToBoxAdapter(
                         child: Column(
                           children: [
-                            TabBar(
-                              // controller: StockCubit.tabController,
-                              isScrollable: true,
-
-                              tabs: stockCubit.stocksTabList
-                                  .map((tabTitle) => Tab(text: tabTitle))
-                                  .toList(),
-                              unselectedLabelColor: AppColors.customGreyColor,
-                              indicatorColor: AppColors.blackColor,
-                              labelColor: AppColors.blackColor,
-                              dividerColor: AppColors.lightBorderColor,
-                              tabAlignment: TabAlignment.start,
-                              // onTap: (value) {
-                              //   print('SSS ' + value.toString());
-                              // },
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 18),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        AppImages.splashLogo,
+                                        height: 30,
+                                        width: 30,
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 14),
+                                        child: Text(
+                                          'Stocks',
+                                          style: AppTextStyles.robotoStyle(
+                                              fontSize: 18,
+                                              weight: FontWeight.w600),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.search,
+                                        size: 30,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 12),
+                                        child: Icon(
+                                          Icons.qr_code,
+                                          size: 30,
+                                        ),
+                                      ),
+                                      Image.asset(
+                                        AppImages.dummyProfile,
+                                        height: 30,
+                                        width: 30,
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
-                            Expanded(
-                              child: TabBarView(
-                                // controller: StockCubit.tabController,
-
-                                children: stockCubit.allWidgets,
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 20, bottom: 10),
+                              child: SizedBox(
+                                height: 70,
+                                child: ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  padding: EdgeInsets.symmetric(horizontal: 18),
+                                  children: [
+                                    MarketCapWidget(
+                                      title: 'NIFTY 50',
+                                      currentValue: '24,194.50',
+                                      todayPercentage: '-27.40 (0.11%)',
+                                      firstItemPedding: true,
+                                    ),
+                                    MarketCapWidget(
+                                      title: 'BANK NIFTY',
+                                      currentValue: '52,191.50',
+                                      todayPercentage: '-16.00 (0.03%)',
+                                    ),
+                                    MarketCapWidget(
+                                      title: 'Sensex',
+                                      currentValue: '81,438.26',
+                                      todayPercentage: '-194.73 (0.24%)',
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                    )
-                  ],
+                      SliverPersistentHeader(
+                        pinned: true,
+                        delegate: _TabBarDelegate(
+                          TabBar(
+                            // controller: StockCubit.tabController,
+                            isScrollable: true,
+
+                            tabs: stockCubit.stocksTabList
+                                .map((tabTitle) => Tab(text: tabTitle))
+                                .toList(),
+                            unselectedLabelColor: AppColors.customGreyColor,
+                            indicatorColor: AppColors.blackColor,
+                            labelColor: AppColors.blackColor,
+                            dividerColor: AppColors.lightBorderColor,
+                            tabAlignment: TabAlignment.start,
+                            // onTap: (value) {
+                            //   print('SSS ' + value.toString());
+                            // },
+                          ),
+                        ),
+                      ),
+                    ],
+                    body: TabBarView(
+                      // controller: StockCubit.tabController,
+                      children: stockCubit.allWidgets,
+                    ),
+                  ),
                 ),
               ));
         }));
+  }
+}
+
+class _TabBarDelegate extends SliverPersistentHeaderDelegate {
+  final TabBar tabBar;
+
+  _TabBarDelegate(this.tabBar);
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      color: Colors.white, // background color of tab bar
+      child: tabBar,
+    );
+  }
+
+  @override
+  double get maxExtent => tabBar.preferredSize.height;
+  @override
+  double get minExtent => tabBar.preferredSize.height;
+
+  @override
+  bool shouldRebuild(_TabBarDelegate oldDelegate) {
+    return false;
   }
 }
