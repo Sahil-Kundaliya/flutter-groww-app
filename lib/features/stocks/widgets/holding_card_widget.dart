@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:groww_flutter/constant/app_colors.dart';
-import 'package:groww_flutter/constant/app_text_styles.dart';
 import 'package:groww_flutter/features/stocks/widgets/holding_card_amount_widget.dart';
 
 class HoldingCardWidget extends StatelessWidget {
@@ -94,7 +93,7 @@ class HoldingCardWidget extends StatelessWidget {
                 title: "Invested",
                 subTitle: "₹14,817.10",
                 isTotal: true,
-              )
+              ),
             ],
           ),
         ),
