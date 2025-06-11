@@ -8,8 +8,8 @@ class MiniLineChart extends StatelessWidget {
   const MiniLineChart({
     required this.data,
     required this.lineColor,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

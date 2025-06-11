@@ -6,6 +6,7 @@ import 'package:groww_flutter/constant/app_text_styles.dart';
 import 'package:groww_flutter/features/home/widgets/market_cap_widget.dart';
 import 'package:groww_flutter/features/stocks/cubits/stock_cubit.dart';
 import 'package:groww_flutter/features/stocks/cubits/stock_state.dart';
+import 'package:groww_flutter/features/widgets/tab_bar_delegate.dart';
 
 class StockScreen extends StatefulWidget {
   const StockScreen({super.key});
@@ -116,7 +117,7 @@ class _StockScreenState extends State<StockScreen>
                       ),
                       SliverPersistentHeader(
                         pinned: true,
-                        delegate: _TabBarDelegate(
+                        delegate: TabBarDelegate(
                           TabBar(
                             // controller: StockCubit.tabController,
                             isScrollable: true,
@@ -144,30 +145,5 @@ class _StockScreenState extends State<StockScreen>
                 ),
               ));
         }));
-  }
-}
-
-class _TabBarDelegate extends SliverPersistentHeaderDelegate {
-  final TabBar tabBar;
-
-  _TabBarDelegate(this.tabBar);
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Container(
-      color: Colors.white, // background color of tab bar
-      child: tabBar,
-    );
-  }
-
-  @override
-  double get maxExtent => tabBar.preferredSize.height;
-  @override
-  double get minExtent => tabBar.preferredSize.height;
-
-  @override
-  bool shouldRebuild(_TabBarDelegate oldDelegate) {
-    return false;
   }
 }
