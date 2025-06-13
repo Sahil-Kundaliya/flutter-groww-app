@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:groww_flutter/constant/app_colors.dart';
 import 'package:groww_flutter/constant/app_text_styles.dart';
 
-class TodayMovesWidget extends StatelessWidget {
-  const TodayMovesWidget(
+class TodayMoversWidget extends StatelessWidget {
+  const TodayMoversWidget(
       {super.key,
       required this.titie,
       this.isSelected = false,

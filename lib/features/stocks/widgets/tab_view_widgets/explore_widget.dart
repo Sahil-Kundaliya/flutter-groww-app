@@ -66,7 +66,7 @@ class ExploreWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 child: Text(
-                  'Top Moves todays',
+                  'Top Movers todays',
                   style: AppTextStyles.robotoStyle(
                       fontSize: 15, weight: FontWeight.w700),
                 ),
@@ -75,10 +75,10 @@ class ExploreWidget extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 12),
                 child: Row(
                   children: [
-                    TodayMovesWidget(
+                    TodayMoversWidget(
                       titie: "Gainers",
                     ),
-                    TodayMovesWidget(
+                    TodayMoversWidget(
                       titie: "Losers",
                     ),
                     Container(
@@ -87,7 +87,7 @@ class ExploreWidget extends StatelessWidget {
                       color: AppColors.customGreyColor,
                     ),
                     SizedBox(width: 8),
-                    TodayMovesWidget(
+                    TodayMoversWidget(
                       titie: "Large cap",
                       dropdownIcons: true,
                       isSelected: true,

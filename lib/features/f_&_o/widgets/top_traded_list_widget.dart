@@ -1,29 +1,39 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:groww_flutter/constant/app_images.dart';
+import 'package:groww_flutter/constant/app_colors.dart';
+import 'package:groww_flutter/constant/app_text_styles.dart';
+import 'package:groww_flutter/features/f_&_o/models/top_traded_model.dart';
+import 'package:groww_flutter/features/f_&_o/widgets/expand_view_widget.dart';
 import 'package:groww_flutter/features/f_&_o/widgets/top_trad_single_widget.dart';
 
 class TopTradedListWidget extends StatelessWidget {
-  TopTradedListWidget({super.key});
-  final random = Random();
+  const TopTradedListWidget({super.key, required this.allTopTradeds});
+  final List<TopTradedModel> allTopTradeds;
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      itemCount: 30,
-      itemBuilder: (context, index) {
-        return TopTradSingleWidget(
-          title: 'NIFTY 50',
-          currentPrice: '25,141.40',
-          isPositive: random.nextBool(),
-          todaysChange: '+123.42(0.15%)',
-          tradImage: AppImages.dummyStocks,
-          lastIndex: index != 29,
-        );
-      },
+    return Column(
+      children: [
+        ListView.builder(
+          shrinkWrap: true,
+          padding: EdgeInsets.symmetric(horizontal: 12),
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: allTopTradeds.length,
+          itemBuilder: (context, index) {
+            var topTraded = allTopTradeds[index];
+            return TopTradSingleWidget(
+              title: topTraded.title,
+              currentPrice: topTraded.currentValue.toString(),
+              isPositive: topTraded.isPositive,
+              todaysChange: topTraded.todaysValue,
+              tradImage: topTraded.image,
+              lastIndex: (allTopTradeds.length - 1) != index,
+            );
+          },
+        ),
+        ExpandViewWidget(
+          title: 'See more',
+        )
+      ],
     );
   }
 }
