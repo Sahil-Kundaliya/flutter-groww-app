@@ -2,6 +2,7 @@ class TopTradedModel {
   final String title;
   final double currentValue;
   final String todaysValue;
+  final String todaysPercentage;
   final String image;
   final bool isPositive;
 
@@ -10,7 +11,8 @@ class TopTradedModel {
       required this.currentValue,
       required this.todaysValue,
       required this.image,
-      required this.isPositive});
+      required this.isPositive,
+      required this.todaysPercentage});
 
   factory TopTradedModel.fromJson(Map<String, dynamic> json) {
     return TopTradedModel(
@@ -18,7 +20,8 @@ class TopTradedModel {
         currentValue: (json['currentValue'] ?? 0).toDouble(),
         todaysValue: (json['todaysValue'] ?? 0).toDouble(),
         image: json['image'] ?? '',
-        isPositive: json['isPositive']);
+        isPositive: json['isPositive'],
+        todaysPercentage: json['todaysPercentage']);
   }
 
   Map<String, dynamic> toJson() {
@@ -27,7 +30,8 @@ class TopTradedModel {
       'currentValue': currentValue,
       'todaysValue': todaysValue,
       'image': image,
-      "isPositive": isPositive
+      "isPositive": isPositive,
+      "todaysPercentage": todaysPercentage
     };
   }
 }

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:groww_flutter/constant/app_colors.dart';
-import 'package:groww_flutter/constant/app_text_styles.dart';
 import 'package:groww_flutter/features/f_&_o/models/top_traded_model.dart';
 import 'package:groww_flutter/features/f_&_o/widgets/expand_view_widget.dart';
-import 'package:groww_flutter/features/f_&_o/widgets/top_trad_single_widget.dart';
+import 'package:groww_flutter/features/f_&_o/widgets/top_traded_stock_single_widget.dart';
 
 class TopTradedListWidget extends StatelessWidget {
   const TopTradedListWidget({super.key, required this.allTopTradeds});
@@ -20,11 +18,12 @@ class TopTradedListWidget extends StatelessWidget {
           itemCount: allTopTradeds.length,
           itemBuilder: (context, index) {
             var topTraded = allTopTradeds[index];
-            return TopTradSingleWidget(
+            return TopTradedStockSingleWidget(
               title: topTraded.title,
               currentPrice: topTraded.currentValue.toString(),
               isPositive: topTraded.isPositive,
-              todaysChange: topTraded.todaysValue,
+              todaysChange:
+                  "${topTraded.todaysValue}(${topTraded.todaysPercentage}%)",
               tradImage: topTraded.image,
               lastIndex: (allTopTradeds.length - 1) != index,
             );

@@ -84,7 +84,7 @@ class TopMoversWidget extends StatelessWidget {
                 todaysChange:
                     '${(random.nextDouble() * 60).toStringAsFixed(2)}(${(random.nextDouble() * 8).toStringAsFixed(2)}%)',
                 isPositive: random.nextBool(),
-                tradImage: AppImages.dummyStocks,
+                tradImage: AppImages.triveniTurbineStocks,
                 lastIndex: index != 4,
               );
             },

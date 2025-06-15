@@ -117,7 +117,8 @@ class YourFeedWidget extends StatelessWidget {
                         children: [
                           CircleAvatar(
                             radius: 12,
-                            backgroundImage: AssetImage(AppImages.dummyStocks),
+                            backgroundImage:
+                                AssetImage(AppImages.triveniTurbineStocks),
                           ),
                           SizedBox(width: 8),
                           Text('Vedanta', style: TextStyle(fontSize: 14)),

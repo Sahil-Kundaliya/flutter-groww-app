@@ -45,7 +45,7 @@ class ExploreStockWidget extends StatelessWidget {
                   ),
                 )
               : Image.asset(
-                  AppImages.dummyStocks,
+                  AppImages.triveniTurbineStocks,
                   height: 30,
                   width: 30,
                 ),
@@ -123,7 +123,7 @@ class ImageWidget extends StatelessWidget {
         height: 20,
         width: 20,
         child: Image.asset(
-          stockImage ?? AppImages.dummyStocks,
+          stockImage ?? AppImages.triveniTurbineStocks,
         ),
       ),
     );

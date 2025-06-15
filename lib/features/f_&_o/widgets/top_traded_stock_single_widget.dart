@@ -3,8 +3,8 @@ import 'package:groww_flutter/constant/app_colors.dart';
 import 'package:groww_flutter/constant/app_images.dart';
 import 'package:groww_flutter/constant/app_text_styles.dart';
 
-class TopTradSingleWidget extends StatelessWidget {
-  const TopTradSingleWidget(
+class TopTradedStockSingleWidget extends StatelessWidget {
+  const TopTradedStockSingleWidget(
       {super.key,
       required this.title,
       required this.currentPrice,
@@ -24,7 +24,7 @@ class TopTradSingleWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            tradImage ?? AppImages.dummyStocks,
+            tradImage ?? AppImages.triveniTurbineStocks,
             height: 30,
             width: 35,
             fit: BoxFit.contain,

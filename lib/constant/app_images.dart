@@ -9,5 +9,9 @@ class AppImages {
   static const String upiBottom = 'assets/images/upi_bottom.png';
 
   //dummy stocks
-  static const String dummyStocks = 'assets/images/dummy_stock.png';
+  static const String triveniTurbineStocks =
+      'assets/images/triveni_turbine.png';
+  static const String swiggyStocks = 'assets/images/swiggy.png';
+  static const String zomatoStocks = 'assets/images/zomato.png';
+  static const String bseStocks = 'assets/images/bse.png';
 }

@@ -3,14 +3,13 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:groww_flutter/constant/app_colors.dart';
-import 'package:groww_flutter/constant/app_images.dart';
 import 'package:groww_flutter/constant/app_text_styles.dart';
 import 'package:groww_flutter/features/f_&_o/cubits/f_o_cubit.dart';
 import 'package:groww_flutter/features/f_&_o/cubits/f_o_state.dart';
-import 'package:groww_flutter/features/f_&_o/widgets/top_movers_single_widget.dart';
 import 'package:groww_flutter/features/f_&_o/widgets/top_movers_widget.dart';
 import 'package:groww_flutter/features/f_&_o/widgets/top_traded_list_widget.dart';
-import 'package:groww_flutter/features/stocks/widgets/today_moves_widget.dart';
+import 'package:groww_flutter/features/f_&_o/widgets/top_traded_stock_futures_widget.dart';
+import 'package:groww_flutter/features/f_&_o/widgets/trader_corner_widget.dart';
 
 class ExploreScreen extends StatelessWidget {
   ExploreScreen({super.key});
@@ -18,36 +17,62 @@ class ExploreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 12, bottom: 25, left: 12),
-            child: Text(
-              'Top traded',
-              style: AppTextStyles.robotoStyle(
-                  fontSize: 15, weight: FontWeight.w700),
+    return BlocBuilder<FOCubit, FOState>(builder: (context, state) {
+      final foCubit = context.read<FOCubit>();
+      return SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 12, bottom: 25, left: 12),
+              child: Text(
+                'Top traded',
+                style: AppTextStyles.robotoStyle(
+                    fontSize: 15, weight: FontWeight.w700),
+              ),
             ),
-          ),
-          TopTradedListWidget(
-            allTopTradeds: context.read<FOCubit>().topTraded,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 12,
-              right: 12,
-              top: 25,
+            TopTradedListWidget(
+              allTopTradeds: context.read<FOCubit>().topTraded,
             ),
-            child: Text(
-              'Top Movers todays',
-              style: AppTextStyles.robotoStyle(
-                  fontSize: 15, weight: FontWeight.w700),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 12,
+                right: 12,
+                top: 25,
+              ),
+              child: Text(
+                'Top Movers todays',
+                style: AppTextStyles.robotoStyle(
+                    fontSize: 15, weight: FontWeight.w700),
+              ),
             ),
-          ),
-          TopMoversWidget(),
-        ],
-      ),
-    );
+            TopMoversWidget(),
+            TraderCornerWidget(),
+            TopTradedStockFuturesWidget(
+              topTradedStockFutures: foCubit.topTradedStockFutures,
+              mainTitle: "Top traded stock futures",
+            ),
+            TopTradedStockFuturesWidget(
+              topTradedStockFutures: foCubit.topTradedIndexFutures,
+              mainTitle: "Top traded index futures",
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Text(
+                foCubit.info,
+                textAlign: TextAlign.center,
+                style: AppTextStyles.robotoStyle(
+                    color: AppColors.greyColor,
+                    fontSize: 12,
+                    weight: FontWeight.w400),
+              ),
+            ),
+            SizedBox(
+              height: 40,
+            )
+          ],
+        ),
+      );
+    });
   }
 }

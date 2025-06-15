@@ -24,7 +24,7 @@ class TopMoversSingleWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            tradImage ?? AppImages.dummyStocks,
+            tradImage ?? AppImages.triveniTurbineStocks,
             height: 30,
             width: 35,
             fit: BoxFit.contain,
