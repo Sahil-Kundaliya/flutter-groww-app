@@ -8,6 +8,7 @@ class AppColors {
   static const deepPurpleColor = Colors.deepPurple;
   static const redColor = Colors.red;
   static const blueColor = Colors.blue;
+  static const blueAccentColor = Colors.blueAccent;
   static const greenColor = Colors.green;
   static const pinkColor = Colors.pink;
   static const amberColor = Colors.amber;
