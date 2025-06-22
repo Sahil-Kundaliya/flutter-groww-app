@@ -30,56 +30,52 @@ class _MutualFundScreenState extends State<MutualFundScreen>
               child: NestedScrollView(
                 headerSliverBuilder: (context, innerBoxIsScrolled) => [
                   SliverToBoxAdapter(
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 18),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 18, right: 18, bottom: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
                             children: [
-                              Row(
-                                children: [
-                                  Image.asset(
-                                    AppImages.splashLogo,
-                                    height: 30,
-                                    width: 30,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 14),
-                                    child: Text(
-                                      'Mutual Funds',
-                                      style: AppTextStyles.robotoStyle(
-                                          fontSize: 18,
-                                          weight: FontWeight.w600),
-                                    ),
-                                  )
-                                ],
+                              Image.asset(
+                                AppImages.splashLogo,
+                                height: 30,
+                                width: 30,
                               ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.search,
-                                    size: 30,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 12),
-                                    child: Icon(
-                                      Icons.qr_code,
-                                      size: 30,
-                                    ),
-                                  ),
-                                  Image.asset(
-                                    AppImages.dummyProfile,
-                                    height: 30,
-                                    width: 30,
-                                  ),
-                                ],
+                              Padding(
+                                padding: const EdgeInsets.only(left: 14),
+                                child: Text(
+                                  'Mutual Funds',
+                                  style: AppTextStyles.robotoStyle(
+                                      fontSize: 18, weight: FontWeight.w600),
+                                ),
                               )
                             ],
                           ),
-                        ),
-                      ],
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.search,
+                                size: 30,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 12),
+                                child: Icon(
+                                  Icons.qr_code,
+                                  size: 30,
+                                ),
+                              ),
+                              Image.asset(
+                                AppImages.dummyProfile,
+                                height: 30,
+                                width: 30,
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   SliverPersistentHeader(
@@ -88,7 +84,6 @@ class _MutualFundScreenState extends State<MutualFundScreen>
                       TabBar(
                         // controller: StockCubit.tabController,
                         isScrollable: true,
-
                         tabs: mutualCubit.mutualTabList
                             .map((tabTitle) => Tab(text: tabTitle))
                             .toList(),
