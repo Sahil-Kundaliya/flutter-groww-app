@@ -47,7 +47,7 @@ class _MutualFundScreenState extends State<MutualFundScreen>
                                   Padding(
                                     padding: const EdgeInsets.only(left: 14),
                                     child: Text(
-                                      'F&O',
+                                      'Mutual Funds',
                                       style: AppTextStyles.robotoStyle(
                                           fontSize: 18,
                                           weight: FontWeight.w600),

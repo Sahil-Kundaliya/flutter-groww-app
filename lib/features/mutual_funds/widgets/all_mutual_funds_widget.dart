@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dash/flutter_dash.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:groww_flutter/constant/app_colors.dart';
-import 'package:groww_flutter/constant/app_images.dart';
 import 'package:groww_flutter/constant/app_text_styles.dart';
 import 'package:groww_flutter/features/f_&_o/widgets/expand_view_widget.dart';
 import 'package:groww_flutter/features/mutual_funds/models/mutual_fund_model.dart';

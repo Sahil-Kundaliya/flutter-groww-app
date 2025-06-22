@@ -9,7 +9,6 @@ import 'package:groww_flutter/features/mutual_funds/widgets/collection_widget.da
 import 'package:groww_flutter/features/mutual_funds/widgets/funds_by_groww_widget.dart';
 import 'package:groww_flutter/features/mutual_funds/widgets/popular_funds_widget.dart';
 import 'package:groww_flutter/features/mutual_funds/widgets/products_and_tools_widget.dart';
-import 'package:groww_flutter/features/mutual_funds/widgets/single_collection_widget.dart';
 import 'package:groww_flutter/features/mutual_funds/widgets/start-sip_widget.dart';
 
 class ExploreScreen extends StatelessWidget {
@@ -27,7 +26,10 @@ class ExploreScreen extends StatelessWidget {
             SizedBox(
               height: 15,
             ),
-            PopularFundsWidget(),
+            PopularFundsWidget(
+              title: 'Popular Funds',
+              subtitle: 'All Mutual Funds',
+            ),
             SizedBox(
               height: 15,
             ),

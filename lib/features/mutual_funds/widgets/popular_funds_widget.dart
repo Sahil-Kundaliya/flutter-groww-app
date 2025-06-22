@@ -4,7 +4,9 @@ import 'package:groww_flutter/constant/app_text_styles.dart';
 import 'package:groww_flutter/features/mutual_funds/widgets/single_popular_fund_widget.dart';
 
 class PopularFundsWidget extends StatelessWidget {
-  const PopularFundsWidget({super.key});
+  const PopularFundsWidget({super.key, required this.title, this.subtitle});
+  final String title;
+  final String? subtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -16,19 +18,20 @@ class PopularFundsWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Popular Funds",
+                title, // "Popular Funds",
                 style: AppTextStyles.robotoStyle(
                     weight: FontWeight.w700,
                     fontSize: 14,
                     color: AppColors.blackColor),
               ),
-              Text(
-                'All Mutual Funds',
-                style: AppTextStyles.robotoStyle(
-                    weight: FontWeight.w600,
-                    fontSize: 12,
-                    color: AppColors.customGreenColor),
-              ),
+              if (subtitle != null)
+                Text(
+                  subtitle ?? '', //  'All Mutual Funds',
+                  style: AppTextStyles.robotoStyle(
+                      weight: FontWeight.w600,
+                      fontSize: 12,
+                      color: AppColors.customGreenColor),
+                ),
             ],
           ),
         ),
