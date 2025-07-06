@@ -15,12 +15,18 @@ class SingleUpiItemWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          CircleAvatar(
-            radius: 22,
-            backgroundColor: Colors.grey[200],
-            child: Icon(
-              toolIcon,
-              size: 20,
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.grey[200],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              child: Icon(
+                toolIcon,
+                size: 22,
+                color: AppColors.customGreenColor,
+              ),
             ),
           ),
           Expanded(

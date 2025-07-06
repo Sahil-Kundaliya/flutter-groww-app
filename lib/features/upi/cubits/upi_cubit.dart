@@ -9,14 +9,13 @@ class UpiCubit extends Cubit<UpiState> {
   List<CollectionModel> allUpiItems = [
     CollectionModel(
         collectionTitle: "Activate UPI\nLite",
-        collectionIcon: Icons.arrow_downward_sharp),
+        collectionIcon: Icons.fast_forward_outlined),
     CollectionModel(
-        collectionTitle: "Pay\nanyone", collectionIcon: Icons.campaign_sharp),
+        collectionTitle: "Pay\nanyone", collectionIcon: Icons.person_outlined),
     CollectionModel(
-        collectionTitle: "SIP\ncalculator",
-        collectionIcon: Icons.percent_rounded),
+        collectionTitle: "SIP\ncalculator", collectionIcon: Icons.refresh),
     CollectionModel(
         collectionTitle: "Compare\nfunds",
-        collectionIcon: Icons.query_stats_sharp),
+        collectionIcon: Icons.account_balance_wallet_outlined),
   ];
 }
